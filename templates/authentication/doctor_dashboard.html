@@ -1,0 +1,22 @@
+  
+    <body>
+      <header>
+        <nav>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'doctor_signup' %}">Doctor Signup</a></li>
+            {% if request.user.is_authenticated and request.user.doctor %}
+              <li><a href="{% url 'doctor_dashboard' %}">Dashboard</a></li>
+            {% endif %}
+            {% if request.user.is_superuser %}
+              <li><a href="{% url 'admin_doctor_approve' %}">Admin Approval</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+
+
+{% block content %}
+  <h1>Welcome {{ doctor.name }}</h1>
+  <p>Dashboard content goes here.</p>
+{% endblock %}

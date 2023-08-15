@@ -1,0 +1,201 @@
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+  
+    <script src="{% static 'jquery.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+    
+   <title>predico</title>
+   
+   <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}">
+
+    
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'homepage/css.css' %}">
+
+
+
+
+
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <div class="container-fluid">
+
+    
+      
+      <nav class="navbar navbar-expand-lg navbar-dark  mt-1 ml-1" style="background-color:#1d9fc2;">
+        <a class="navbar-brand" href="{% url 'index' %}"><img style="width: 60px; height:50px ;border: radius 5.5rem ;" src="{%static 'img/logo_free-file.png'%}"></a>
+    
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" style="color: rgb(255, 255, 255);" href="{% url 'index' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" style="color: rgb(255, 255, 255);" href="{% url 'index' %}">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" style="color: rgb(255, 255, 255);" href="{% url 'index' %}">Contact</a>
+                  </li>
+             
+                    <!-- style="color: rgb(13, 14, 12);" -->
+    
+       
+              
+    
+              <li class="nav-item ml-2">
+                <li class="nav-link" href="{% url 'profile_Docor' %}" style="color: rgb(240, 244, 6);">Hello, Dr. {{mymembers.name}}</li>
+                </li>
+                <li class="nav-item ml-2">
+                    <a class="nav-link" href="{% url 'profile_Docor' %}" style="color: rgb(255, 255, 255);">Profile</a>
+                    </li>
+    
+    
+    
+           
+    
+    
+    
+    
+    
+              <!-- Small modal -->
+
+   
+              
+              
+              
+              <li class="nav-item ml-">
+               <a href="{% url 'userLogout' %}" class="btn btn-primary btn-block">Logout</a>
+          
+                        </li>
+       
+            </ul>
+          </div> 
+      </nav>
+      <body> 
+    
+<div class="container mt-3 mb-3">
+<center><h2>Doctor Profile</h2>
+</center><br>
+
+<style>
+
+  .img {
+    position: relative;
+    float: left;
+    width:  200px;
+    height: 200px;
+    background-position: 100% 100%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+    </style>
+
+
+
+
+
+    <div class="row">
+        <div class="col" >
+
+            <div class="card" style="width:350px">
+                <img class="card-img-top" src="{% static 'img/Doctor.png' %}" alt="Card image" style="width:100%;">
+                <div class="card-body">
+                  <h4 class="card-title">Doctor Naame : {{mymembers.name}}</h4>
+                  <p class="card-text">Doctor Phone - {{mymembers.phone_number}}</p>
+                  <p class="card-text">Doctor email - {{mymembers.email}}</p>
+                </div>
+              </div>
+
+        </div>
+
+
+        <div class="col" >
+             
+            <div class="row">
+             <a class="btn btn-outline-info btn-block" href="{% url 'Doctor' %}">view Doctor Report</a><br>
+             </div>
+
+
+                <div class="row">
+                    <a class="btn btn-outline-info btn-block" data-toggle="modal" href="{% url 'ta' %}" data-target="#myModal-feedback">view patients Required </a><br>
+                    </div>
+                   
+    
+                    <!-- The Modal -->
+      <div class="modal fade" id="myModal-feedback">
+        <div class="modal-dialog modal-xl ">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Feedbacks</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST">  
+                  <div class="form-group">
+                    <label for="comment">Give feeback:</label>
+                    <textarea class="form-control" rows="5" id="feedback" name="feedback"></textarea>
+                  </div>
+                  
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button id="submit" type="submit" class="btn btn-success" data-dismiss="modal" style="color: white;">Submit</button>
+            </div>
+                </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+        
+    
+            </div>
+        </div>
+    
+    <script>
+    
+    
+    
+    </script>
+    
+      
+  
+
+</body>
+
+   </title>
+  </head>
+</html>

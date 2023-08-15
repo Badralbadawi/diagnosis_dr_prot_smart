@@ -1,0 +1,10 @@
+<h1>Add Doctor Note</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="note">Note:</label><br>
+    <textarea id="note" name="note"></textarea><br>
+    <input type="submit" value="Submit">
+</form>
+
+<a href="{% url 'patient_record' patient_id=patient.id %}">Back to Patient Record</a>

@@ -1,0 +1,18 @@
+<!-- patient_search.html -->
+<h1>{{ patient.name }}</h1>
+
+<h2>Search results for "{{ search_query }}":</h2>
+
+{% if notes %}
+  <ul>
+    {% for note in notes %}
+      <li>
+        {{ note.note }} - {{ note.created_at|date:"F j, Y, g:i a" }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No search results found.</p>
+{% endif %}
+
+<a href="{% url 'patients:patient_detail' patient.id %}">Back to patient detail</a>

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% load static %}
+<!-- partial:index.partial.html -->
+{% block content %}
+
+<section class="page-content">
+  <section class="search-and-user">
+    <form>
+      <input type="search" placeholder="Search Pages...">
+      <button type="submit" aria-label="submit form">
+        <svg aria-hidden="true">
+          <use xlink:href="#search"></use>
+        </svg>
+      </button>
+    </form>
+    <div class="admin-profile">
+      <span class="greeting"></span>
+      
+    </div>
+  </section>
+    <br><br>
+    <div class="container-fluid">
+
+      <!-- Page Heading -->
+      <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+      <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+          For more information about DataTables, please visit the <a target="_blank"
+              href="https://datatables.net">official DataTables documentation</a>.</p>
+
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                <table border='1'>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>image</th>
+                    <th>Gender</th>
+                    <th scope="col">Actions</th>
+
+              
+                  </tr>
+                  {% for x in mymembers %}
+                    <tr>
+                      <td><a href="website/details/{{ x.id }}">{{x.id}}</a></td>
+                        <td>{{ x.name }}</td>
+                      <td>{{ x.age }}</td>
+                      <td><img src="{{ x.image.url }}" alt=""/></td>
+                      <td>{{ x.gender }}</td>
+                      <td>
+                        <a href="{% url 'update' x.id%}"><i class="fas fa-edit"></i></a>
+                        <a class="text-danger" href="{% url 'delete' x.id %}"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                 
+                    </tr>
+                  {% endfor %}
+                </table>              </div>
+          </div>
+      </div>
+      
+
+  </div>
+
+
+
+
+
+
+</section> 
+<!-- partial -->
+  <script  src="{% static 'js/ta.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

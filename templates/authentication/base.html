@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'doctor_signup' %}">Doctor Signup</a></li>
+        {% if request.user.is_authenticated and request.user.doctor %}
+          <li><a href="{% url 'doctor_dashboard' %}">Dashboard</a></li>
+        {% endif %}
+        {% if request.user.is_superuser %}
+          <li><a href="{% url 'admin_doctor_approve' %}">Admin Approval</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block ok %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

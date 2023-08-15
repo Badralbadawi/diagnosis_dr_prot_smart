@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SMART DIAGNOSIS SIGN</title>
+  <link rel="stylesheet" href="style .css">
+  
+  <link rel="stylesheet" href="{% static 'css/style_signup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style_signup.css' %}">
+  <script src="{% static 'js/script_admin.js' %}"></script>
+
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+
+  <form method="post" style="float: left;width: 50%;">
+    {% csrf_token %}
+
+          </a>
+
+  <style>
+.form{
+  float: left;
+  width: 50%;
+}
+.input{
+  height: 50%;
+}
+  </style>
+  
+      <header>
+        <nav>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'doctor_signup' %}">Doctor Signup</a></li>
+            {% if request.user.is_authenticated and request.user.doctor %}
+              <li><a href="{% url 'doctor_dashboard' %}">Dashboard</a></li>
+            {% endif %}
+            {% if request.user.is_superuser %}
+              <li><a href="{% url 'admin_doctor_approve' %}">Admin Approval</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+  <h1>Doctor Signup</h1>
+    <img  style="border-radius:90px ;width: 200px;" src="{%static 'img/logo_free-file.png'%}">  
+    <h2 class="form_title title">Create Account</h2>
+    <span class="form__span">or use email for registration</span>
+
+    <input id="username" class="form__input" type="text"  placeholder="User Name" name="username" required>
+    <input id="first_name" class="form__input" type="text" placeholder="Frist Name" name="first_name" required>
+    <input id="last_name" class="form__input" type="text" placeholder="Last Name"name="last_name" required >
+    <input class="form__input"id="email" name="email" type="text" placeholder="Email" required>
+    <input class="form__input" id="password1" type="password" placeholder="Password"name="password1" required>
+    <input class="form__input" id="password2"type="password" placeholder="Retype Password"name="password2" required>
+    <input class="form__input" id="phone_number"type="number" placeholder="Phone number"name="phone_number" required>
+    <input class="form__input" id="workplace"type="text" placeholder="Work place"name="workplace" required>
+    <input id="address" class="form__input" type="text" placeholder="Address"name="address" required>
+    <label for="gender">
+    <select class="form__input" id="gender" name="gender" required>
+       <option value="">Select Gender</option>
+       <option value="Man">Male</option>
+       <option value="Woman">Female</option>
+   
+    </select>
+    <input class="form__input" id="qualification" type="text" placeholder="Qualification"name="qualification" required>
+      <select class="form__input" id="user_type" name="user_type" required>
+        <option value="">Select User Type</option>
+        <option value="doctor" required>Doctor</option>
+        <option value="assistant">Assistant</option>
+      </select>
+      <button class="custom-btn btn-9" type="submit">Signup</button>
+
+<body>

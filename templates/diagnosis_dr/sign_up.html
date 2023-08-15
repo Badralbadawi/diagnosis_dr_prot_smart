@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main">
+            <!-- login Doctor_ASS -->
+
+      <div class="container a-container" id="a-container">
+        <center>
+          <div>
+            {% for message in messages %}
+            <h3 style="color: red;">{{message}}</h3>
+            {% endfor %}
+          </div>
+          </center>
+          <br>
+
+
+
+        <!-- <form class="form" id="a-form" method="POST" action=""> -->
+          <form method="POST"class="form" id="b-form" action="">
+            {% csrf_token %}
+         
+          <img src=" {% static 'img/Dr_Assisnt.png' %}" style="height: 100px; width: 100px;">
+          <h2 class="form_title title">DR_Assient</h2>
+          
+   
+          <input id="id_DR_ass" class="form__input" type="text" name="user_name"  placeholder="Enter User Name" required>
+          <br>
+
+          <input id="name_d" class="form__input" type="text" name="name" placeholder="Enter Name" required>
+            <br>
+            <input id="pass_DR_ass" class="form__input" type="email" name="email" placeholder="Enter Email" required>
+            <br>
+
+            <input id="id_DR_ass" class="form__input" type="number" name="phone_number"  placeholder="Enter Phone Number" required>
+            <br>
+            <div class="form-floating mb-3" >
+              <!-- تحديد الجنس -->
+              <select class="btn btn-primary btn-xl"  id="genbox" name="gender" checked>
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
+            <div id="qrcode"></div>
+
+  </div><br>
+
+
+            <input id="pass_DR_ass" class="form__input" type="text" name="workplace" placeholder="Enter Workplace" required>
+          
+            <input id="id_DR_ass" class="form__input" type="text" name="address"  placeholder="Enter Address" required>
+            <br>
+
+            <input id="pass_DR_ass" class="form__input" type="text" name="registration_number" placeholder="Enter Registration_Number" required>
+            <br>
+            <input id="id_DR_ass" class="form__input" type="text" name="qualification"  placeholder="Enter Qualification" required>
+            <br>
+
+            <input id="pass_DR_ass" class="form__input" type="text" name="state_medical_council" placeholder="Enter State Medical Council" required>
+            <br>
+            <div class="form-floating mb-3" >
+              <!-- تحديد الجنس -->
+              <select class="btn btn-primary btn-xl"  id="genbox" name="specialization" >
+                <option value="Doctor">Doctor</option>
+                <option value="Doctor Assist">Doctor Assist</option>
+            </select>
+         
+
+  </div><br>
+     
+
+            <input id="pass_DR_ass" class="form__input" type="password" name="password" placeholder="Enter Password" required>
+           
+            <input id="id_DR_ass" class="form__input" type="password" name="password1"  placeholder="Enter Retype  Password" required>
+         
+
+
+
+            <button type="submit" id="submit_DR" class="custom-btn btn-9" >SIGN UP</button>
+ -->
+{% for msg in messages %}
+<h4>{{msg}}</h4>
+{% endfor  %}
+
+          </a>
+        </form>
+
+</div>
+    </div>
+  </body>
+</html>

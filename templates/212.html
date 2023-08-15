@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <head>
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'doctor_signup' %}">Doctor Signup</a></li>
+        {% if request.user.is_authenticated and request.user.doctor %}
+          <li><a href="{% url 'doctor_dashboard' %}">Dashboard</a></li>
+        {% endif %}
+        {% if request.user.is_superuser %}
+          <li><a href="{% url 'admin_doctor_approve' %}">Admin Approval</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block ok %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>
+<tr>
+              
+  <td><a href="{% url 'admin_doctor_approve_detail_doctors' doctor.pk %}">{{ doctor.name }}</a></td>
+  <td>{{ doctor.email }}</td>
+  <td>{{ doctor.user_type }}</td>
+
+</tr>
+
+<tr>
+</tr>
+{% endfor %}
+{% else %}
+<td colspan="3">لا يوجد مستخدمون أطباء أو مساعدون طبيون غير موافق عليهم حاليًا.</td>
+
+<p>No unapproved doctors.</p>
+
+</tbody>
+{% endif %}
+
+</ul>
+

@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SMART DIAGNOSIS SIGN</title>
+  <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
+
+</head>
+
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+  </head>
+  <body bgcolor="#fbfdfe">
+    <center>
+    <div class="main">
+      <!-- login Doctor_ASS -->
+      
+      
+      <br>
+      
+      
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="background-color:red;color: aliceblue;border-radius: 2.5rem;">{{ message }}</li>
+          {% endfor %}
+      </ul>
+  {% endif %}
+
+        <!-- <form class="form" id="a-form" method="POST" action=""> -->
+          <form method="POST"class="form" id="b-form" action="">
+            {% csrf_token %}
+         
+            <img  style="border-radius:90px ;width: 200px;" src="{%static 'img/logo_free-file.png'%}">  
+          <h2 class="form_title title">Login Site</h2>
+          
+   
+          <input id="id_DR_ass" class="form__input" type="text" name="username"  placeholder="Enter Username">
+          <br>
+
+          <input id="pass_DR_ass" class="form__input" type="password" name="password" placeholder="Enter Password">
+<br>
+            <button type="submit" id="submit_DR" class="custom-btn btn-9" >SIGN IN</button>
+            <a href="{% url 'doctor_signup' %}"> Register</a>
+<br><br>
+<a href="{% url 'reset_password' %}"> forget password</a>
+{% comment %} <a href="{% url 'postReset' %}"> Frogot password</a> {% endcomment %}
+
+{% for msg in messages %}
+<h4>{{msg}}</h4>
+{% endfor  %}
+
+  <!-- <button  class="btn btn-primary">Submit</button> -->
+          </a>
+        </form>
+        
+        <!-- <h4>{{msg}}</h4> -->
+      </div>
+      <p></p>
+    </div>
+  </center>
+
+     
+    
+    <script src="main.js"></script>
+    
+ 
+</html>
+<!-- partial -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import {getDatabase, ref, set, onValue, push,child,update} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+ 
+         // TODO: Add SDKs for Firebase products that you want to use
+         // https://firebase.google.com/docs/web/setup#available-libraries
+ 
+         // Your web app's Firebase configuration
+         const firebaseConfig = {
+             // Your configurations here
+             apiKey: "AIzaSyCb5_XWFevGqghU_WD59kpjfXPaxCTD0Uo",
+     authDomain: "asder-accce.firebaseapp.com",
+     projectId: "asder-accce",
+     storageBucket: "asder-accce.appspot.com",
+     messagingSenderId: "942615118447",
+     appId: "1:942615118447:web:3e39d7036b49a2c353c39a"
+         };
+ 
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+   
+   // Get a reference to the database service
+   const database = getDatabase(app);
+ 
+   submit_DR_ass.addEventListener('click', (e) => {
+ 
+              var Note = document.getElementById("id_DR_ass").value;
+              var namep = document.getElementById("name").value;
+              // var age = document.getElementById("age").value;
+              // var genbox = document.getElementById("radio1").value;
+
+ 
+        
+        
+              const userId = push(child(ref(database), 'users')).key;
+
+         
+             set(ref(database, "pat/Diagnosis_result/"+ userId),{
+             Note:Note,
+            //  namep: namep,
+            //  age:age,
+            //  genbox:genbox,
+         
+         }).then(() => {
+             // Data saved successfully!
+             alert('data submitted');
+         })
+             .catch((error) => {
+                 // The write failed...
+                 alert(error);
+             });
+ 
+   });
+
+   submit_DR_ass.addEventListener('click', (e) => {
+ 
+ var Note = document.getElementById("note").value;
+ // var namep = document.getElementById("name").value;
+ // var age = document.getElementById("age").value;
+ // var genbox = document.getElementById("radio1").value;
+
+
+
+
+ const userId = push(child(ref(database), 'users')).key;
+
+
+set(ref(database, "pat/Diagnosis_result/"+ userId),{
+Note:Note,
+//  namep: namep,
+//  age:age,
+//  genbox:genbox,
+
+}).then(() => {
+// Data saved successfully!
+alert('data submitted');
+})
+.catch((error) => {
+    // The write failed...
+    alert(error);
+});
+
+});
+
+</script> 
+
+  <script  src="{% static 'js/script admin.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- patient_detail.html -->
+<h1>{{ patient.name }}</h1>
+
+<h2>Doctor Notes</h2>
+
+{% if notes %}
+  <ul>
+    {% for note in notes %}
+      <li>
+        {{ note.note }} - {{ note.created_at|date:"F j, Y, g:i a" }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No doctor notes found.</p>
+{% endif %}
+
+<h2>Add Doctor Note</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="note">Note:</label>
+  <textarea name="note" id="note"></textarea>
+  <button type="submit">Add Note</button>
+</form>
+
+<h2>Search Doctor Notes</h2>
+
+<form method="get" action="{% url 'patients:patient_search' patient.id %}">
+  <label for="q">Search:</label>
+  <input type="text" name="q" value="{{ search_query }}">
+  <button type="submit">Search</button>
+</form>

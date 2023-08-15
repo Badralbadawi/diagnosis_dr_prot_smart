@@ -1,0 +1,24 @@
+<h1>Patient Record</h1>
+
+<h2>Patient Information</h2>
+<ul>
+    <li>Name: {{ patient.user.first_name }} {{ patient.user.last_name }}</li>
+    <li>Date of Birth: {{ patient.date_of_birth }}</li>
+    <li>Gender: {{ patient.gender }}</li>
+    <li>Current Health Status: {{ patient.current_health_status }}</li>
+    <li>Previous Health Status: {{ patient.previous_health_status }}</li>
+    <li>Medications: {{ patient.medications }}</li>
+</ul>
+
+<h2>Doctor Notes</h2>
+{% if doctor_notes %}
+    <ul>
+    {% for note in doctor_notes %}
+        <li>{{ note.date }} - {{ note.doctor.first_name }} {{ note.doctor.last_name }}: {{ note.note }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No doctor notes found.</p>
+{% endif %}
+
+<a href="{% url 'add_doctor_note' patient_id=patient.id %}">Add Doctor Note</a>
