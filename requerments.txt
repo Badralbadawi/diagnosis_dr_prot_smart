@@ -1,0 +1,8 @@
+django
+tensorflow
+numpy
+reportlab
+matplotlib
+tensorflow
+qrcode
+django-jazzmin
